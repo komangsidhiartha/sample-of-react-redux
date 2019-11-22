@@ -1,8 +1,9 @@
 import React from 'react'
+
 import './App.css'
 import LeftNavigator from "./components/LeftNavigator"
 import RightNavigator from "./components/RightNavigator"
-import MainContent from "./components/MainContent";
+import MainContent from "./components/MainContent"
 
 function App() {
 

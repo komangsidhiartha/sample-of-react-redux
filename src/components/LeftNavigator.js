@@ -1,19 +1,53 @@
 import React from 'react'
+import { connect } from "react-redux"
+import { selectFramework } from "../redux/main/action"
+import Select from "react-select"
 
-export default class LeftNavigator extends React.PureComponent {
+const options = [
+  {
+    label: 'ReactJs',
+    value: 0
+  },
+  {
+    label: 'VueJs',
+    value: 1
+  },
+  {
+    label: 'AngularJs',
+    value: 2
+  }
+]
+
+class LeftNavigator extends React.Component {
   render() {
+    const { selectedFramework } = this.props
+
+    console.log(selectedFramework)
+
     return (
-      <select>
-        <option selected>
-          ReactJs
-        </option>
-        <option>
-          VueJs
-        </option>
-        <option>
-          AngularJs
-        </option>
-      </select>
+      <Select
+        value={ selectedFramework }
+        onChange={ this.handleSelectChange }
+        options={ options }
+      />
     )
   }
+
+  handleSelectChange = (value) => {
+    console.log(`value ${JSON.stringify(value)}`)
+
+    const { selectFramework } = this.props
+    selectFramework(value.value)
+  }
 }
+
+const mapStateToProps = (state) => {
+  console.log(`state ${JSON.stringify(state)}`)
+  return {
+    selectedFramework: options[state.main.framework]
+  }
+}
+
+const mapDispatchToProps = { selectFramework }
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeftNavigator)
