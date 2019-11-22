@@ -1,1 +1,1 @@
-Simple Sample of how to use react-redux
+Simple Sample on how to use react-redux
