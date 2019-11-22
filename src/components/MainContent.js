@@ -1,29 +1,6 @@
 import React from 'react'
-import reactLogo from '../images/logo.svg'
-import angularLogo from '../images/AngularJS_logo.svg'
-import vueLogo from '../images/Vue.js_logo.svg'
 import {connect} from "react-redux";
-
-const data = [
-  {
-    id: 'react',
-    logo: reactLogo,
-    link: 'https://reactjs.org',
-    linkText: 'Learn React'
-  },
-  {
-    id: 'vue',
-    logo: vueLogo,
-    link: 'https://vuejs.org',
-    linkText: 'Learn Vue'
-  },
-  {
-    id: 'angular',
-    logo: angularLogo,
-    link: 'https://angularjs.org',
-    linkText: 'Learn Angular'
-  }
-]
+import { frameworkData } from "../consts/data";
 
 const logoStyles = [
   'App-logo-small',
@@ -41,7 +18,7 @@ class MainContent extends React.Component {
     console.log(`selected framework ${selectedFramework}`)
     console.log(`selected style ${selectedStyle}`)
 
-    const { logo, link, linkText } = data[selectedFramework]
+    const { logo, link, linkText } = selectedFramework
 
     return (
       <header className="App-header">
@@ -65,10 +42,9 @@ class MainContent extends React.Component {
 const mapStateToProps = (state) => {
   console.log(`state ${JSON.stringify(state)}`)
   return {
-    selectedFramework: state.main.framework,
+    selectedFramework: frameworkData.filter((data) => data.id === state.main.framework).pop(),
     selectedStyle: state.main.logoStyle
   }
 }
-
 
 export default connect(mapStateToProps)(MainContent)

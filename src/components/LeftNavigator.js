@@ -2,21 +2,7 @@ import React from 'react'
 import { connect } from "react-redux"
 import { selectFramework } from "../redux/main/action"
 import Select from "react-select"
-
-const options = [
-  {
-    label: 'ReactJs',
-    value: 0
-  },
-  {
-    label: 'VueJs',
-    value: 1
-  },
-  {
-    label: 'AngularJs',
-    value: 2
-  }
-]
+import { frameworkData } from "../consts/data";
 
 class LeftNavigator extends React.Component {
   render() {
@@ -28,7 +14,7 @@ class LeftNavigator extends React.Component {
       <Select
         value={ selectedFramework }
         onChange={ this.handleSelectChange }
-        options={ options }
+        options={ frameworkData }
       />
     )
   }
@@ -37,14 +23,14 @@ class LeftNavigator extends React.Component {
     console.log(`value ${JSON.stringify(value)}`)
 
     const { selectFramework } = this.props
-    selectFramework(value.value)
+    selectFramework(value.id)
   }
 }
 
 const mapStateToProps = (state) => {
   console.log(`state ${JSON.stringify(state)}`)
   return {
-    selectedFramework: options[state.main.framework]
+    selectedFramework: frameworkData.filter((data) => data.id === state.main.framework).pop()
   }
 }
 

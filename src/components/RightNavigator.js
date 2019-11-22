@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux"
-import {selectFramework, selectLogoStyle} from "../redux/main/action"
+import { selectLogoStyle } from "../redux/main/action"
 import Select from "react-select"
 
 const options = [
@@ -18,7 +18,7 @@ const options = [
   }
 ]
 
-class LeftNavigator extends React.Component {
+class RightNavigator extends React.Component {
   render() {
     const { selectedStyle } = this.props
 
@@ -49,4 +49,4 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = { selectLogoStyle }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeftNavigator)
+export default connect(mapStateToProps, mapDispatchToProps)(RightNavigator)

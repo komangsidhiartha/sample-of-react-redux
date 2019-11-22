@@ -1,7 +1,7 @@
 import {SET_SELECTED_FRAMEWORK, SET_SELECTED_LOGO_STYLE} from "./constant";
 
 const initialState = {
-  framework: 0,
+  framework: 'react',
   logoStyle: 0
 }
 
