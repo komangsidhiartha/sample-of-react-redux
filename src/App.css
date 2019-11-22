@@ -1,9 +1,19 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .App-logo {
   height: 40vmin;
+}
+
+.App-logo-medium {
+  height: 20vmin;
+}
+
+.App-logo-small {
+  height: 10vmin;
 }
 
 .App-header {
@@ -11,6 +21,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  flex: 1;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -19,4 +30,8 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.navigation {
+  flex: 1
 }
